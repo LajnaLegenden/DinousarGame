@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -12,6 +13,12 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        
+        public static ContentManager MyContent;
+        public static SpriteBatch SpriteBatch;
+
+        //Textures
+        Texture2D[] Running;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -27,6 +34,9 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            MyContent = Content;
+            SpriteSheet sp = new SpriteSheet("sprites");
+            
 
             base.Initialize();
         }
@@ -39,7 +49,10 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            _ = this.Content.Load<Texture2D>("sprites");
+            SpriteBatch = spriteBatch;
+
+            //Assign texttre from spritesheet
+            Running = [];
 
             // TODO: use this.Content to load your game content here
         }
